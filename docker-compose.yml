@@ -1,0 +1,46 @@
+version: '3'
+services:
+  # ELK Stack
+  elk-logstash:
+    image: dockerhub.qingcloud.com/chatopera/elk-logstash:6.5.4
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+    volumes:
+      - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "15001:4999"
+      - "15002:5000"
+      - "15003:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx512m -Xms256m"
+    depends_on:
+      - elk-es
+
+  elk-kibana:
+    image: dockerhub.qingcloud.com/chatopera/elk-kibana:6.5.4
+    restart: always
+    volumes:
+      - ./elk/kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - "15005:5601"
+    depends_on:
+      - elk-es
+
+
+  elk-es:
+    image: dockerhub.qingcloud.com/chatopera/elk-es:6.5.4
+    restart: always
+    volumes:
+      - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./elk/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+      - ./elk/elasticsearch/data:/usr/share/elasticsearch/data
+    ports:
+      - "15006:9200"
+      - "15007:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx8192m -Xms8192m"
