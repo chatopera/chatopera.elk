@@ -19,8 +19,9 @@
 # Xms represents the initial size of total heap space
 # Xmx represents the maximum size of total heap space
 
--Xms8192m
--Xmx8192m
+-Xms2G
+-Xmx20G
+-XX:MaxPermSize
 
 ################################################################
 ## Expert settings
@@ -46,6 +47,9 @@
 # 10-:-XX:InitiatingHeapOccupancyPercent=75
 
 ## optimizations
+-XX:+UseLargePages
+-XX:+UnlockExperimentalVMOptions
+-XshowSettings:vm
 
 # pre-touch memory pages used by the JVM during initialization
 -XX:+AlwaysPreTouch

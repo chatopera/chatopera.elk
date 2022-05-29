@@ -44,4 +44,4 @@ services:
       - "15006:9200"
       - "15007:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx8192m -Xms8192m"
+      ES_JAVA_OPTS: "-Xmx20G -Xms2G"
