@@ -20,8 +20,7 @@
 # Xmx represents the maximum size of total heap space
 
 -Xms2G
--Xmx20G
--XX:MaxPermSize
+-Xmx12G
 
 ################################################################
 ## Expert settings
@@ -34,7 +33,7 @@
 ################################################################
 
 ## GC configuration
--XX:+UseConcMarkSweepGC
+#-XX:+UseConcMarkSweepGC
 -XX:CMSInitiatingOccupancyFraction=75
 -XX:+UseCMSInitiatingOccupancyOnly
 
@@ -47,7 +46,7 @@
 # 10-:-XX:InitiatingHeapOccupancyPercent=75
 
 ## optimizations
--XX:+UseLargePages
+#-XX:+UseLargePages
 -XX:+UnlockExperimentalVMOptions
 -XshowSettings:vm
 

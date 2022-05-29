@@ -4,11 +4,6 @@ services:
   elk-logstash:
     image: dockerhub.qingcloud.com/chatopera/elk-logstash:6.5.4
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
     volumes:
       - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./elk/logstash/pipeline:/usr/share/logstash/pipeline:ro
@@ -43,5 +38,3 @@ services:
     ports:
       - "15006:9200"
       - "15007:9300"
-    environment:
-      ES_JAVA_OPTS: "-Xmx20G -Xms2G"
