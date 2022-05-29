@@ -37,6 +37,7 @@ services:
     restart: always
     volumes:
       - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./elk/elasticsearch/config/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
       - ./elk/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
       - ./elk/elasticsearch/data:/usr/share/elasticsearch/data
     ports:
