@@ -2,7 +2,7 @@ version: '3'
 services:
   # ELK Stack
   elk-logstash:
-    image: dockerhub.qingcloud.com/chatopera/elk-logstash:6.5.4
+    image: chatopera/elk-logstash:6.5.4
     restart: always
     volumes:
       - ./elk/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
@@ -17,7 +17,7 @@ services:
       - elk-es
 
   elk-kibana:
-    image: dockerhub.qingcloud.com/chatopera/elk-kibana:6.5.4
+    image: chatopera/elk-kibana:6.5.4
     restart: always
     volumes:
       - ./elk/kibana/config/:/usr/share/kibana/config:ro
@@ -28,7 +28,7 @@ services:
 
 
   elk-es:
-    image: dockerhub.qingcloud.com/chatopera/elk-es:6.5.4
+    image: chatopera/elk-es:6.5.4
     restart: always
     volumes:
       - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
