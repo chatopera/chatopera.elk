@@ -17,6 +17,9 @@ Based on the official Docker images from Elastic:
 * [logstash](https://github.com/elastic/logstash-docker)
 * [kibana](https://github.com/elastic/kibana-docker)
 
+Addon
+* [elasticsearch-head](https://mobz.github.io/elasticsearch-head/)
+
 ## Run
 
 ```
