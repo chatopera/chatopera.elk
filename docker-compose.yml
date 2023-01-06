@@ -36,5 +36,11 @@ services:
       - ./elk/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
       - ./elk/elasticsearch/data:/usr/share/elasticsearch/data
     ports:
-      - "15006:9200"
-      - "15007:9300"
+      - "${ES_PORT1:-9200}:9200"
+      - "${ES_PORT2:-9300}:9300"
+
+  elk-head:
+    image: "chatopera/elasticsearch-head:5_20200127"
+    restart: always
+    ports:
+      - "${HEAD_PORT:-9100}:9100"
