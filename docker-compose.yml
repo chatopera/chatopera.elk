@@ -38,3 +38,9 @@ services:
     ports:
       - "15006:9200"
       - "15007:9300"
+
+  elk-head:
+    image: "chatopera/elasticsearch-head:5_20200127"
+    restart: always
+    ports:
+      - "${HEAD_PORT:-9100}:9100"
