@@ -26,18 +26,19 @@ services:
     depends_on:
       - elk-es
 
-
   elk-es:
     image: chatopera/elk-es:6.5.4
     restart: always
+    environment:
+      - "ES_JAVA_OPTS=-Xms2g -Xmx4g"
     volumes:
       - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - ./elk/elasticsearch/config/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
       - ./elk/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options
       - ./elk/elasticsearch/data:/usr/share/elasticsearch/data
     ports:
-      - "15006:9200"
-      - "15007:9300"
+      - "${ES_PORT1:-9200}:9200"
+      - "${ES_PORT2:-9300}:9300"
 
   elk-head:
     image: "chatopera/elasticsearch-head:5_20200127"
