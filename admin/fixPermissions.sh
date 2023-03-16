@@ -1,6 +1,6 @@
 #! /bin/bash 
 ###########################################
-#
+# Fix Startup Error due to permission problems
 ###########################################
 
 # constants
@@ -12,17 +12,6 @@ export PATH=/opt/miniconda3/envs/venv-py3/bin:$PATH
 
 # main 
 [ -z "${BASH_SOURCE[0]}" -o "${BASH_SOURCE[0]}" = "$0" ] || return
-
 cd $baseDir/..
 set -x
-
-if [ -f .env ]; then
-    source .env
-else
-    echo ".env not present" `pwd`
-    exit 1
-fi
-
-docker-compose ps
-curl http://localhost:${ES_PORT1}/_cluster/health\?pretty
-
+sudo chmod 777 -R elk/elasticsearch/data

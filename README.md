@@ -23,6 +23,8 @@ Addon
 ## Run
 
 ```
-cp sample.env .env
-docker-compose up -d
+cp sample.env .env # modify the ports
+cp docker-compose.yml docker-compose.custom.yml # modify the ENVs, e.g. jvm options
+bin/fixPermissions.sh
+docker-compose up -d elk-head elk-es elk-kibana elk-logstash
 ```

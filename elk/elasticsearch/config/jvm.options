@@ -19,7 +19,7 @@
 # Xms represents the initial size of total heap space
 # Xmx represents the maximum size of total heap space
 
--Xms8G
+-Xms2G
 -Xmx8G
 
 ################################################################
@@ -56,7 +56,7 @@
 ## basic
 
 # explicitly set the stack size
--Xss1m
+-Xss32m
 
 # set to headless, just in case
 -Djava.awt.headless=true

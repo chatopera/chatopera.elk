@@ -30,7 +30,7 @@ services:
     image: chatopera/elk-es:6.5.4
     restart: always
     environment:
-      - "ES_JAVA_OPTS=-Xms2g -Xmx4g"
+      - "ES_JAVA_OPTS=-Xms2g -Xmx8g"
     volumes:
       - ./elk/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - ./elk/elasticsearch/config/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties
